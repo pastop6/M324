@@ -59,7 +59,7 @@
             buttonAdd.TabIndex = 2;
             buttonAdd.Text = "Hinzufügen";
             buttonAdd.UseVisualStyleBackColor = true;
-            buttonAdd.Click += buttonAdd_Click;
+            buttonAdd.Click += ButtonAdd_Click;
             // 
             // buttonRemove
             // 
@@ -69,7 +69,7 @@
             buttonRemove.TabIndex = 3;
             buttonRemove.Text = "Löschen";
             buttonRemove.UseVisualStyleBackColor = true;
-            buttonRemove.Click += buttonRemove_Click;
+            buttonRemove.Click += ButtonRemove_Click;
             // 
             // buttonSave
             // 
@@ -79,7 +79,7 @@
             buttonSave.TabIndex = 4;
             buttonSave.Text = "Speichern";
             buttonSave.UseVisualStyleBackColor = true;
-            buttonSave.Click += buttonSave_Click;
+            buttonSave.Click += ButtonSave_Click;
             // 
             // Form1
             // 

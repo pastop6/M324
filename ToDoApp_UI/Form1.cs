@@ -3,7 +3,7 @@ namespace ToDoApp_UI
     public partial class Form1 : Form
     {
         private string filePath = "todo_list.csv";
-        private List<string> tasks = new List<string>();
+        private List<string> tasks = [];
 
         public Form1()
         {
@@ -16,7 +16,7 @@ namespace ToDoApp_UI
         {
             if (File.Exists(filePath))
             {
-                tasks = new List<string>(File.ReadAllLines(filePath));
+                tasks = [.. File.ReadAllLines(filePath)];
             }
         }
 
@@ -35,7 +35,7 @@ namespace ToDoApp_UI
             }
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private void ButtonAdd_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(textBoxTask.Text))
             {
@@ -45,7 +45,7 @@ namespace ToDoApp_UI
             }
         }
 
-        private void buttonRemove_Click(object sender, EventArgs e)
+        private void ButtonRemove_Click(object sender, EventArgs e)
         {
             if (listBoxTasks.SelectedIndex >= 0)
             {
@@ -54,7 +54,7 @@ namespace ToDoApp_UI
             }
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void ButtonSave_Click(object sender, EventArgs e)
         {
             SaveTasks();
             MessageBox.Show("Aufgaben gespeichert!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
