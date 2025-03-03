@@ -53,6 +53,9 @@ class Program
         {
             tasks = new List<string>(File.ReadAllLines(filePath));
         }
+
+        var firstTask = tasks.FindIndex(task => task.StartsWith("1."));
+        var varFürDenBrakePoint = "testen";
     }
 
     static void SaveTasks()
