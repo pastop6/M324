@@ -2,9 +2,62 @@ namespace ToDoApp_UI
 {
     public partial class Form1 : Form
     {
+        private string filePath = "todo_list.csv";
+        private List<string> tasks = new List<string>();
+
         public Form1()
         {
             InitializeComponent();
+            LoadTasks();
+            UpdateTaskList();
+        }
+
+        private void LoadTasks()
+        {
+            if (File.Exists(filePath))
+            {
+                tasks = new List<string>(File.ReadAllLines(filePath));
+            }
+        }
+
+        private void SaveTasks()
+        {
+            File.WriteAllLines(filePath, tasks);
+        }
+
+        private void UpdateTaskList()
+        {
+            listBoxTasks.Items.Clear();
+            listBoxTasks.Items.Add("Aufgaben:");
+            foreach (var task in tasks)
+            {
+                listBoxTasks.Items.Add(task);
+            }
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(textBoxTask.Text))
+            {
+                tasks.Add(textBoxTask.Text);
+                UpdateTaskList();
+                textBoxTask.Clear();
+            }
+        }
+
+        private void buttonRemove_Click(object sender, EventArgs e)
+        {
+            if (listBoxTasks.SelectedIndex >= 0)
+            {
+                tasks.RemoveAt(listBoxTasks.SelectedIndex);
+                UpdateTaskList();
+            }
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            SaveTasks();
+            MessageBox.Show("Aufgaben gespeichert!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
