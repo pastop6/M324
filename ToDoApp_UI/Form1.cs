@@ -28,7 +28,6 @@ namespace ToDoApp_UI
         private void UpdateTaskList()
         {
             listBoxTasks.Items.Clear();
-            listBoxTasks.Items.Add("Aufgaben:");
             foreach (var task in tasks)
             {
                 listBoxTasks.Items.Add(task);
