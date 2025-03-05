@@ -4,8 +4,8 @@ EXPOSE 5000
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["ToDoApp_UI.csproj", "./"]
-RUN dotnet restore "./ToDoApp_UI.csproj"
+COPY ["ToDoApp_UI/ToDoApp_UI.csproj", "./"]
+RUN dotnet restore "ToDoApp_UI.csproj"
 
 COPY . .
 RUN dotnet publish -c Release -o /app/publish
