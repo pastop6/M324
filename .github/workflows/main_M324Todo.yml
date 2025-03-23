@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://m324containerregistry.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_36478bae6f9d49c0beb4b486d4690bed }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_e8d202b6db8848509313a43eb23ce2dd }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_9dc83d5ed2c44fb7941bd22fa2dbc849 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_336cf28310b84d5e8254e06e2e177da8 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: m324containerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_36478bae6f9d49c0beb4b486d4690bed }}/m324todo:${{ github.sha }}
+        tags: m324containerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_9dc83d5ed2c44fb7941bd22fa2dbc849 }}/m324todo:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'M324Todo'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_a66fd5d2492547dea8c70afa36e93875 }}
-        images: 'm324containerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_36478bae6f9d49c0beb4b486d4690bed }}/m324todo:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_eadea3ba823f40b083860c36a301e9ce }}
+        images: 'm324containerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_9dc83d5ed2c44fb7941bd22fa2dbc849 }}/m324todo:${{ github.sha }}'
